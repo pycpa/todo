@@ -4,4 +4,7 @@
   background-color: grey;
   border-radius: 0.5rem;
   padding: 0.5rem;
+  min-width: 300px;
+  min-height: 300px;
+  position: relative;
 }

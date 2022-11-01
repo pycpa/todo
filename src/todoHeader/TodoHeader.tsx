@@ -1,39 +1,31 @@
 import { useState } from "react";
 import styles from "./TodoHeader.module.css";
 import { FaSun } from "react-icons/fa";
+import { TodoReducerAction } from "../reducers/todoReducer";
+import { Filter, FILTERS } from "../todoApp/TodoApp";
 
-const TodoHeader = () => {
-  const [filter, setFilter] = useState<"all" | "active" | "completed">("all");
+interface TodoHeaderProps {
+  filter: Filter;
+  dispatch: React.Dispatch<TodoReducerAction>;
+}
 
+const TodoHeader = ({ filter: currentFilter, dispatch }: TodoHeaderProps) => {
   return (
     <header className={styles.container}>
       <FaSun color="white" />
       <nav>
         <ul className={styles.navItems}>
-          <li
-            onClick={() => setFilter("all")}
-            className={`${styles.navItem} ${
-              filter === "all" && styles.navItemSelected
-            }`}
-          >
-            All
-          </li>
-          <li
-            onClick={() => setFilter("active")}
-            className={`${styles.navItem} ${
-              filter === "active" && styles.navItemSelected
-            }`}
-          >
-            Active
-          </li>
-          <li
-            onClick={() => setFilter("completed")}
-            className={`${styles.navItem} ${
-              filter === "completed" && styles.navItemSelected
-            }`}
-          >
-            completed
-          </li>
+          {FILTERS.map((filter) => (
+            <li
+              key={filter}
+              onClick={() => dispatch({ type: "filter", filter })}
+              className={`${styles.navItem} ${
+                filter === currentFilter && styles.navItemSelected
+              }`}
+            >
+              {filter}
+            </li>
+          ))}
         </ul>
       </nav>
     </header>
