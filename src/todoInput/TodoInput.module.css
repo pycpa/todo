@@ -1,0 +1,23 @@
+.container {
+}
+
+.todoInput {
+  padding: 0.5rem;
+  border: none;
+  border-top-left-radius: 0.25rem;
+  border-bottom-left-radius: 0.25rem;
+}
+
+.todoInput:focus {
+  outline: none;
+}
+
+.Addbutton {
+  padding: 0.5rem 1rem;
+  background-color: coral;
+  color: white;
+  cursor: pointer;
+  border: none;
+  border-top-right-radius: 0.25rem;
+  border-bottom-right-radius: 0.25rem;
+}
